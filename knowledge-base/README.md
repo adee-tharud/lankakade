@@ -7,15 +7,17 @@ This directory is the source of truth for building and operating the Romanian e-
 - Front end: React with TypeScript
 - Styling: Tailwind CSS
 - Client state: Redux Toolkit
+- Backend: shared Node.js/Express API and MySQL database
 - Market: Romania
 - Currency: RON
 
 ## How to use this knowledge base
 
 1. Read the architecture, structure, state, and security guides before starting a feature.
-2. Follow the design-system rules when creating or changing UI.
-3. Update the relevant guide in the same change whenever a decision changes.
-4. Record open decisions rather than silently making product or security assumptions.
+2. Read the backend API and database guides before integrating a server-backed feature.
+3. Follow the design-system rules when creating or changing UI.
+4. Update the relevant guide in the same change whenever a decision changes.
+5. Record open decisions rather than silently making product or security assumptions.
 
 ## Guides
 
@@ -28,6 +30,9 @@ This directory is the source of truth for building and operating the Romanian e-
 | [05 Security and OTP](./05-security-and-otp.md) | Account, OTP, checkout, and data-security requirements. |
 | [06 Engineering standards](./06-engineering-standards.md) | Quality, testing, and delivery conventions. |
 | [07 Romania commerce](./07-romania-commerce.md) | Local product, checkout, privacy, and operational considerations. |
+| [08 Backend API](./08-backend-api.md) | Local setup, endpoint inventory, browser sessions, payloads, and error handling. |
+| [09 Database overview](./09-database.md) | MySQL schema, relationships, migrations, inventory, and order and payment lifecycles. |
+| [10 Storefront UI reference](./10-storefront-ui-reference.md) | Figma style direction, reusable components, responsive patterns, and feedback states. |
 
 ## Decision log
 

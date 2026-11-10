@@ -28,6 +28,8 @@ The final palette, typography, logo treatment, and light/dark-mode policy remain
 3. Patterns: header, search, filters, product grid, cart panel, checkout steps.
 4. Pages: assemble patterns and features; they do not create new visual rules casually.
 
+See the [storefront UI reference](./10-storefront-ui-reference.md) for the Figma review and the components to reuse across screens.
+
 ## Component requirements
 
 - Define visual variants, sizes, loading, disabled, focus, empty, and error states before reuse.

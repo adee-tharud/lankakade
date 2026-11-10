@@ -9,6 +9,13 @@
 - Do not duplicate domain rules between UI, Redux, and API services.
 - Comments explain decisions or constraints, not obvious syntax.
 
+## Required coding checks
+
+- [ ] **Colors use design tokens.** Never hardcode colors in components, inline styles, CSS rules, Tailwind utilities, or SVG fills and strokes. Raw palette values belong only in the central theme definitions. Use a semantic token for every color, including hover, focus, and error states. See the [design system](./04-design-system.md#design-token-policy).
+- [ ] **Secrets stay on the server.** Never hardcode secret keys, credentials, tokens, signing secrets, or other sensitive values. Read secrets from server-side runtime configuration or a secret manager. Keep them out of Git, Vite client variables and bundles, browser storage, request URLs, logs, and analytics. Use placeholders in examples and synthetic data in tests.
+- [ ] **Security is a release requirement.** Treat all client input as untrusted. Validate it at the server boundary, enforce authentication and resource ownership or role permissions for each protected operation, and deny access by default. Use parameterized queries, safe text rendering, and the API's session and origin protections. Review changed paths for injection, XSS, CSRF, and unauthorized access. Verify that malformed requests and unauthorized users fail safely. See the [security checklist](./05-security-and-otp.md#security-test-checklist).
+- [ ] **API calls follow the contract.** Use the shared service layer and configured API origin. Send only the fields the endpoint accepts, include session credentials where required, and validate response data before use. Handle empty responses, expired sessions, forbidden access, rate limits, timeouts, and server errors without exposing private data. Retry writes only when the contract makes them safe. For checkout, reuse the same idempotency key and payload if the outcome is unknown. See the [backend API guide](./08-backend-api.md).
+
 ## Testing strategy
 
 | Layer | Test intent |
@@ -27,7 +34,7 @@ A feature is complete only when it:
 - Uses the documented file structure and design system.
 - Handles mobile, keyboard, loading, empty, error, and success states.
 - Has appropriate automated coverage for its risk.
-- Avoids exposing sensitive values.
+- Passes the required coding checks above.
 - Updates this knowledge base if it introduces a reusable decision or workflow.
 - Passes linting, type checking, build, and relevant tests.
 

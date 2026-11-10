@@ -12,6 +12,8 @@ Build a responsive, accessible storefront whose user interface, business rules, 
 | Styling | Tailwind CSS | Use approved design tokens and reusable primitives; avoid one-off visual values. |
 | Client state | Redux Toolkit | Use for shared client state and workflows, not every component value. |
 | API access | Dedicated service layer | UI components never call endpoints directly. |
+| Backend | Node.js 24+ and Express, with MySQL 8.4+ | Both storefront and admin use `/api/v1`. See [Backend API](./08-backend-api.md) and [Database overview](./09-database.md). |
+| Authentication | Server-side sessions with HttpOnly cookies | The browser sends credentials and the API checks the current account and request origin. |
 | Forms | Feature-owned form layer | Validate immediately for usability and always validate again on the server. |
 | Routing | Route modules | Pages compose features; they do not contain domain logic. |
 
@@ -53,8 +55,6 @@ Page / route
 
 ## Decisions still needed
 
-- Backend/API and database platform.
-- Authentication and session strategy.
 - Payment and Romanian courier providers.
 - Tax/invoicing service and return-policy workflow.
-- Content, localization, and admin platform.
+- Content and localization.
