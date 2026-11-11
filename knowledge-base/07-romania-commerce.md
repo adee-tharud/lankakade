@@ -6,7 +6,7 @@ The storefront targets customers in Romania. Product and legal requirements must
 
 ## Customer experience
 
-- Default language: Romanian. Decide explicitly whether English or other translations are needed.
+- Support Romanian and English with a shared header selector. Romanian is the default, and the customer can save an English preference.
 - Display currency consistently in Romanian leu (RON), including unit price, discount, delivery cost, taxes, and final total.
 - Make stock state, estimated delivery, returns, and customer-support details clear before checkout.
 - Capture and validate delivery addresses in a format compatible with the selected courier; support localities, counties, postal codes, and optional pickup points when required.

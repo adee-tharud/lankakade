@@ -1,0 +1,30 @@
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --color-brand: #064b30;
+  --color-brand-deep: #073d29;
+  --color-brand-soft: #eaf2e9;
+  --color-accent: #b4ed85;
+  --color-accent-hover: #a0df6b;
+  --color-surface: #ffffff;
+  --color-page: #fafaf5;
+  --color-muted-surface: #f2f4ed;
+  --color-text: #183e2d;
+  --color-muted: #647365;
+  --color-border: #dce4d8;
+  --color-focus: #1d703a;
+  --color-error: #a52920;
+  --color-error-surface: #fff1ee;
+  --color-error-border: #efcbc4;
+  --color-success: #235b37;
+  --color-success-surface: #edf6ea;
+  --color-on-brand: #f4f8ee;
+  --color-on-brand-muted: #c3d7c5;
+  --color-brand-border: #36644c;
+  --color-clear: transparent;
+  --shadow-panel: 0 12px 40px rgb(6 75 48 / 4%);
+}
+
+/* Preserve the storefront’s existing responsive thresholds. */
+@custom-variant compact-nav (@media (max-width: 1100px));
+@custom-variant tablet (@media (max-width: 900px));
+@custom-variant mobile (@media (max-width: 680px));

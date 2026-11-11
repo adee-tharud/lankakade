@@ -8,8 +8,8 @@ Choose the smallest scope that can safely own a value.
 | --- | --- | --- |
 | Ephemeral UI state | Component | Open menu, hovered card, uncontrolled visual toggle. |
 | Screen/form state | Page or feature | Search draft, delivery-form progress, validation display. |
-| Shared client state | Redux Toolkit | Cart UI state, authenticated user summary, app preferences. |
-| Server state | API-query/cache layer | Products, inventory, order details, addresses. |
+| Shared client state | Redux Toolkit or a focused provider | Authenticated user summary; cart provider keyed to the current customer; language provider. |
+| Server state | Feature services and abortable resource hooks | Products, inventory, cart, order details, addresses. |
 | Persistent sensitive state | Server only | Passwords, raw OTPs, payment information, authorization decisions. |
 
 ## Redux Toolkit rules
@@ -23,8 +23,9 @@ Choose the smallest scope that can safely own a value.
 
 ## Cart policy
 
-- A guest cart may be stored locally only with a short, documented retention policy.
-- On sign-in, reconcile the guest cart with the server cart using backend rules and show any conflicts clearly.
+- Guests can browse but cannot create or mutate a cart. Show the translated “You must sign in first.” notice with a sign-in link. No guest cart is persisted or merged.
+- Keep the server cart snapshot in memory in `CartProvider`, keyed by customer ID. Remount it on logout, expiry, or account change. Never save cart contents in browser storage.
+- Read the latest server cart before an add, then submit the exact new quantity. Serialize writes and refresh the authoritative cart after a failed mutation. Never automatically replay a write after a timeout.
 - The server recalculates product price, discount, tax, availability, and delivery eligibility at checkout.
 - Never treat a browser-stored cart total as authoritative.
 

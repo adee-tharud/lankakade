@@ -19,7 +19,7 @@ Recommended semantic color roles:
 | Border | Default, strong, focus, and destructive outlines. |
 | Status | Success, warning, error, and information feedback. |
 
-The final palette, typography, logo treatment, and light/dark-mode policy remain open product decisions. Add them here before building pages.
+The initial auth and account implementation uses the reference's green and cream style, pale green primary actions, Plus Jakarta Sans, and the supplied logo and hero artwork. The central palette lives in `src/styles/theme.css`. The first release uses a light theme. See the [implementation notes](./11-auth-and-account.md) for the current scope.
 
 ## Component hierarchy
 
@@ -41,7 +41,7 @@ See the [storefront UI reference](./10-storefront-ui-reference.md) for the Figma
 
 ## Content conventions
 
-- Use Romanian as the default customer language unless product requirements specify multilingual content.
+- Support English and Romanian through the shared header language selector. Keep Romanian as the default and preserve the selected language across navigation and reloads.
 - Display prices in RON consistently and make discounts, stock limits, delivery conditions, and errors unambiguous.
 - Keep destructive actions explicit and reversible where possible.
 
@@ -50,3 +50,7 @@ See the [storefront UI reference](./10-storefront-ui-reference.md) for the Figma
 - Prefer approved token-based utility combinations over arbitrary values.
 - Extract repeated, meaningful patterns into components rather than creating a large global CSS layer.
 - Keep global CSS limited to resets, font setup, base elements, and documented app-wide needs.
+
+The storefront uses Tailwind v4 through `@tailwindcss/vite`. `src/index.css` imports Tailwind and the central theme, then applies shared element defaults in `@layer base`. Component and page styling lives in JSX utility classes; do not add a separate component stylesheet or recreate semantic CSS classes with `@apply`.
+
+`src/styles/theme.css` owns the palette, font, shadow, and responsive variants. `compact-nav:`, `tablet:`, and `mobile:` preserve the existing inclusive 1100 px, 900 px, and 680 px thresholds. Declare narrower maximum-width variants last so their overrides take precedence. Use standard Tailwind variants for interaction, validation, and reduced motion. Stable `data-slot` attributes let layouts target shared component roots with Tailwind arbitrary variants and let browser tests locate elements without depending on presentation classes.

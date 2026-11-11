@@ -33,6 +33,8 @@ This directory is the source of truth for building and operating the Romanian e-
 | [08 Backend API](./08-backend-api.md) | Local setup, endpoint inventory, browser sessions, payloads, and error handling. |
 | [09 Database overview](./09-database.md) | MySQL schema, relationships, migrations, inventory, and order and payment lifecycles. |
 | [10 Storefront UI reference](./10-storefront-ui-reference.md) | Figma style direction, reusable components, responsive patterns, and feedback states. |
+| [11 Auth and account](./11-auth-and-account.md) | Implemented routes, cookie sessions, local API configuration, and browser verification. |
+| [12 Storefront browsing](./12-storefront-browsing.md) | Home, shop, product variants, shared header, signed-in cart, and validation. |
 
 ## Decision log
 

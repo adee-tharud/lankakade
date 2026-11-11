@@ -8,7 +8,7 @@ Reviewed the supplied `Untitled.fig` export on 2026-11-10 using its canvas previ
 - Use Plus Jakarta Sans as the reference typeface. Keep the strong headlines, compact category labels, clear price hierarchy, softly rounded cards, and generous spacing. The supplied brand artwork includes Sinhala lettering. Preserve that lettering in approved artwork and keep important page text and actions accessible as HTML.
 - Let food photography carry the home hero, category tiles, product cards, and collection promo. Give product images a consistent aspect ratio, and define useful alt text and a fallback for missing images. Keep the hero artwork legible on narrow screens.
 - The reference uses a wide desktop header with links and search. The compact header keeps the brand, menu, account, cart, and search accessible. Catalog cards form a compact two-column grid on the mobile reference. Checkout, account, and contact panels stack on smaller screens. Treat the 1440 px and 390 px frames as reference points and design for widths between and beyond them.
-- Use Romanian copy and localized RON formatting per the [commerce guide](./07-romania-commerce.md). The reference shows English copy and an EN/RO control. The supported languages and final palette are still to be confirmed.
+- Support Romanian and English copy through the reusable header language selector. Keep RON as the currency in both languages per the [commerce guide](./07-romania-commerce.md).
 
 ## Shared primitives and layout
 
@@ -64,9 +64,13 @@ Use visible focus, keyboard support, and readable touch targets for compact cont
 
 ## Reference features that need product or API decisions
 
-The reference includes demo prices, pickup, Stripe, sample order history, a map placeholder, and a bilingual control. Confirm content and service support before presenting them as live. The [backend API guide](./08-backend-api.md) is the source for integration details.
+The reference includes demo prices, pickup, Stripe, sample order history, and a map placeholder. The bilingual header selector is implemented. Confirm content and service support before presenting them as live. The [backend API guide](./08-backend-api.md) is the source for integration details.
 
-- **Catalog cards and filters.** Product lists provide `priceFrom` and `inStock` but omit images and variants. Plan a list payload or an approved fallback for photo-led cards. Category photos also need an asset source. Use a real variant ID for cart actions. The API supports name or slug search, category, and price filters. Brand, in-stock filtering, custom sort order, and a global result count need contract decisions.
+- **Catalog cards and filters.** Product lists now provide `priceFrom`, `inStock`, and nullable first-image fields. Product cards use these real images with an icon fallback. Category photos still need an asset source, so category tiles currently use icons and real category names. Use a real variant ID for cart actions. The API supports name or slug search, category, and price filters. Brand, in-stock filtering, custom sort order, and a global result count need contract decisions.
 - **Cart and delivery.** Server carts require a signed-in customer, and checkout preview uses an owned Romanian address and a configured flat fee. Guest checkout, saved-address defaults, and store pickup are separate decisions. Show only eligible options and server-calculated fees.
 - **Payments and orders.** Order creation is local test mode only. Production payment handoff, order history and tracking, and order email resend need backend support. The existing customer endpoint reads an owned order by ID.
-- **Account and content.** The current login contract has no remember-me option. Contact submission and a live map need approved integrations. Confirm store details and supported languages before using the reference copy.
+- **Account and content.** The current login contract has no remember-me option. Contact submission and a live map need approved integrations. Confirm store details before using the reference copy.
+
+## Implemented storefront
+
+Home, Shop, product details, shared product cards, category tiles, price formatting, quantity controls, header search, and server-backed cart browsing are implemented. See [12 Storefront browsing](./12-storefront-browsing.md) for route behavior, API boundaries, and verification. Contact Us and About Us are explicitly deferred by the user; their header labels remain inactive.
