@@ -9,6 +9,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test:e2e": "playwright test test/browser/auth-account.spec.ts",
+    "test:storefront": "playwright test test/browser/storefront.spec.ts",
+    "test:browser": "playwright test",
     "test:api-failures": "playwright test test/browser/api-failures.spec.ts"
   },
   "dependencies": {

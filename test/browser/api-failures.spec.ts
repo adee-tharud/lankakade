@@ -54,3 +54,36 @@ test('keyboard navigation reaches form controls with a visible focus indicator',
     .evaluate((element) => getComputedStyle(element).outlineWidth)
   expect(parseFloat(outline)).toBeGreaterThan(0)
 })
+
+test('catalog service failure offers a retry and keeps public navigation usable', async ({
+  page,
+}) => {
+  await page.goto('/shop')
+  await expect(page.getByRole('alert')).toContainText(
+    'Produsele nu au putut fi încărcate',
+  )
+  const response = page.waitForResponse(
+    (response) =>
+      response.url().includes('/api/v1/products?') && response.status() === 503,
+  )
+  await page
+    .getByRole('button', { name: 'Încearcă din nou', exact: true })
+    .click()
+  await response
+  await expect(page.getByRole('alert')).toBeVisible()
+  await page
+    .getByRole('combobox', { name: 'Limba site-ului' })
+    .selectOption('en')
+  await expect(page.getByRole('alert')).toContainText(
+    'We couldn’t load the products',
+  )
+  await page
+    .getByRole('navigation', { name: 'Main navigation' })
+    .getByRole('link', { name: 'Home', exact: true })
+    .click()
+  await expect(
+    page.getByRole('heading', {
+      name: 'Romania Lanka Kade',
+    }),
+  ).toBeVisible()
+})

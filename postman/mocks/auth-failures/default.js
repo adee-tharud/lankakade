@@ -16,6 +16,18 @@ http
         }),
       )
     }
+    if (
+      req.method === 'GET' &&
+      (path === '/api/v1/products' || path === '/api/v1/categories')
+    ) {
+      res.writeHead(503)
+      return res.end(
+        JSON.stringify({
+          error: 'SERVICE_UNAVAILABLE',
+          message: 'Service unavailable',
+        }),
+      )
+    }
     if (req.method === 'POST' && path === '/api/v1/auth/login') {
       const email = req.body?.email
       if (email === 'rate-limit@example.test') {

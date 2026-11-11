@@ -66,7 +66,11 @@ Use visible focus, keyboard support, and readable touch targets for compact cont
 
 The reference includes demo prices, pickup, Stripe, sample order history, and a map placeholder. The bilingual header selector is implemented. Confirm content and service support before presenting them as live. The [backend API guide](./08-backend-api.md) is the source for integration details.
 
-- **Catalog cards and filters.** Product lists provide `priceFrom` and `inStock` but omit images and variants. Plan a list payload or an approved fallback for photo-led cards. Category photos also need an asset source. Use a real variant ID for cart actions. The API supports name or slug search, category, and price filters. Brand, in-stock filtering, custom sort order, and a global result count need contract decisions.
+- **Catalog cards and filters.** Product lists now provide `priceFrom`, `inStock`, and nullable first-image fields. Product cards use these real images with an icon fallback. Category photos still need an asset source, so category tiles currently use icons and real category names. Use a real variant ID for cart actions. The API supports name or slug search, category, and price filters. Brand, in-stock filtering, custom sort order, and a global result count need contract decisions.
 - **Cart and delivery.** Server carts require a signed-in customer, and checkout preview uses an owned Romanian address and a configured flat fee. Guest checkout, saved-address defaults, and store pickup are separate decisions. Show only eligible options and server-calculated fees.
 - **Payments and orders.** Order creation is local test mode only. Production payment handoff, order history and tracking, and order email resend need backend support. The existing customer endpoint reads an owned order by ID.
 - **Account and content.** The current login contract has no remember-me option. Contact submission and a live map need approved integrations. Confirm store details before using the reference copy.
+
+## Implemented storefront
+
+Home, Shop, product details, shared product cards, category tiles, price formatting, quantity controls, header search, and server-backed cart browsing are implemented. See [12 Storefront browsing](./12-storefront-browsing.md) for route behavior, API boundaries, and verification. Contact Us and About Us are explicitly deferred by the user; their header labels remain inactive.

@@ -105,14 +105,16 @@ export function AddressForm({
   }
   return (
     <section
-      className="account-panel address-editor"
+      className="p-7.5 bg-surface border border-border rounded-[15px] mt-6 [&_[data-slot=field]]:max-w-132.5 mobile:p-5.5"
       aria-labelledby="address-editor-title"
     >
-      <span className="eyebrow">{t('ADRESELE TALE')}</span>
+      <span className="gap-1.75 inline-flex items-center text-[0.59rem] font-bold tracking-[0.13em] leading-[1.7]">
+        {t('ADRESELE TALE')}
+      </span>
       <h2 id="address-editor-title">
         {address ? t('Editează adresa') : t('Adaugă o adresă')}
       </h2>
-      <p className="panel-description">
+      <p className="text-[0.78rem] text-muted mb-6.25">
         {t(
           'Completează adresa de livrare. Câmpurile opționale sunt marcate.',
         )}{' '}
@@ -127,7 +129,7 @@ export function AddressForm({
       )}
       <form onSubmit={onSubmit}>
         <fieldset disabled={pending}>
-          <div className="address-form-grid">
+          <div className="grid grid-cols-[1fr_1fr] gap-y-0 gap-x-5 [&>[data-slot=field]:nth-child(4)]:col-span-full [&>[data-slot=field]:nth-child(4)]:max-w-none [&>[data-slot=field]:nth-child(5)]:col-span-full [&>[data-slot=field]:nth-child(5)]:max-w-none mobile:grid-cols-[1fr] mobile:[&_>_*]:col-[1]!">
             {addressFields.map((field) => (
               <FormField
                 key={field.name}
@@ -148,7 +150,7 @@ export function AddressForm({
               />
             ))}
           </div>
-          <div className="button-row">
+          <div className="gap-2.5 flex flex-wrap mobile:[&_>_[data-slot=button]]:flex-1">
             <Button type="submit" pending={pending}>
               {t('Salvează adresa')}{' '}
             </Button>

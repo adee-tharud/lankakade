@@ -67,19 +67,25 @@ export function EmailAction({
 
   if (done)
     return (
-      <div className="auth-content">
-        <div className="state-icon">
+      <div className="m-auto w-full max-w-105">
+        <div className="w-16.5 h-16.5 grid place-items-center rounded-[18px] bg-brand-soft text-brand mb-6.25">
           <CircleCheck size={32} />
         </div>
-        <span className="eyebrow">{t('TOTUL ESTE PREGĂTIT')}</span>
-        <h1>
+        <span className="gap-1.75 inline-flex items-center text-[0.59rem] font-bold tracking-[0.13em] leading-[1.7]">
+          {t('TOTUL ESTE PREGĂTIT')}
+        </span>
+        <h1 className="mobile:text-[2rem]">
           {reset ? t('Parola a fost actualizată.') : t('E-mail confirmat.')}
         </h1>
-        <p className="intro">
+        <p className="mx-0 text-muted text-[0.82rem] mt-3.5 mb-6.25 mobile:mb-5.5">
           {t('Te poți autentifica acum')}{' '}
           {reset ? t('folosind noua parolă') : t('în contul tău Lanka Kade')}.
         </p>
-        <Link to="/sign-in" className="button button-primary w-full">
+        <Link
+          data-slot="button"
+          to="/sign-in"
+          className="w-full px-5 py-3 gap-2.5 min-h-12 inline-flex items-center justify-center border border-clear rounded-lg text-[0.76rem] font-bold leading-[1.5] transition-colors duration-150 bg-accent text-brand-deep hover:bg-accent-hover"
+        >
           {t('Mergi la autentificare')}{' '}
         </Link>
       </div>
@@ -87,18 +93,19 @@ export function EmailAction({
 
   if (!token)
     return (
-      <div className="auth-content">
-        <div className="state-icon">
+      <div className="m-auto w-full max-w-105">
+        <div className="w-16.5 h-16.5 grid place-items-center rounded-[18px] bg-brand-soft text-brand mb-6.25">
           <KeyRound size={30} />
         </div>
-        <h1>{t('Ai nevoie de un link nou.')}</h1>
-        <p className="intro">
+        <h1 className="mobile:text-[2rem]">{t('Ai nevoie de un link nou.')}</h1>
+        <p className="mx-0 text-muted text-[0.82rem] mt-3.5 mb-6.25 mobile:mb-5.5">
           {t(
             'Deschide linkul din e-mail. Dacă a expirat sau ai reîncărcat această pagină, poți solicita altul.',
           )}{' '}
         </p>
         <Link
-          className="button button-primary w-full"
+          data-slot="button"
+          className="w-full px-5 py-3 gap-2.5 min-h-12 inline-flex items-center justify-center border border-clear rounded-lg text-[0.76rem] font-bold leading-[1.5] transition-colors duration-150 bg-accent text-brand-deep hover:bg-accent-hover"
           to={reset ? '/forgot-password' : '/verify-email'}
         >
           {t('Solicită un link nou')}{' '}
@@ -107,13 +114,17 @@ export function EmailAction({
     )
 
   return (
-    <div className="auth-content">
-      <div className="state-icon">
+    <div className="m-auto w-full max-w-105">
+      <div className="w-16.5 h-16.5 grid place-items-center rounded-[18px] bg-brand-soft text-brand mb-6.25">
         {reset ? <KeyRound size={30} /> : <MailCheck size={30} />}
       </div>
-      <span className="eyebrow">{t('CONTUL TĂU LANKA KADE')}</span>
-      <h1>{reset ? t('O parolă nouă.') : t('Confirmă adresa de e-mail.')}</h1>
-      <p className="intro">
+      <span className="gap-1.75 inline-flex items-center text-[0.59rem] font-bold tracking-[0.13em] leading-[1.7]">
+        {t('CONTUL TĂU LANKA KADE')}
+      </span>
+      <h1 className="mobile:text-[2rem]">
+        {reset ? t('O parolă nouă.') : t('Confirmă adresa de e-mail.')}
+      </h1>
+      <p className="mx-0 text-muted text-[0.82rem] mt-3.5 mb-6.25 mobile:mb-5.5">
         {reset
           ? t('Alege o parolă sigură pentru contul tău.')
           : t('Un singur pas și te poți conecta la contul tău.')}
@@ -155,7 +166,7 @@ export function EmailAction({
       </form>
       {error && (
         <Link
-          className="back-link"
+          className="gap-2 underline underline-offset-4 text-[0.74rem] flex items-center justify-center mt-6.5"
           to={reset ? '/forgot-password' : '/verify-email'}
         >
           {t('Solicită un link nou')}{' '}

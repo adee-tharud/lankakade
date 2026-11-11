@@ -203,6 +203,127 @@ export const english = {
   'Răspunsul magazinului nu a putut fi citit. Încearcă din nou.':
     'We couldn’t read the store’s response. Please try again.',
   'Limba site-ului': 'Website language',
+  Acasă: 'Home',
+  Magazin: 'Shop',
+  'Contactează-ne': 'Contact Us',
+  'Despre noi': 'About Us',
+  'În curând': 'Coming soon',
+  'Autentificare / Înregistrare': 'Sign In / Register',
+  'Coș de cumpărături': 'Shopping cart',
+  'Deschide meniul': 'Open menu',
+  'Închide meniul': 'Close menu',
+  'Meniu mobil': 'Mobile navigation',
+  'Închide notificarea': 'Dismiss notification',
+  Caută: 'Search',
+  'Caută produse': 'Search products',
+  'Caută orez, ceai, mirodenii…': 'Search rice, tea, spices…',
+  'Ingredientele tale de acasă': 'Your everyday taste of home',
+  'Explorează magazinul': 'Explore the shop',
+  'Descoperă magazinul': 'Shop the pantry',
+  'Trebuie să te autentifici mai întâi.': 'You must sign in first.',
+  'Produsul a fost adăugat în coș.': 'Your item has been added to the cart.',
+  'Coșul a fost actualizat.': 'Your cart has been updated.',
+  'Poți adăuga cel mult 99 de bucăți dintr-un produs.':
+    'You can add up to 99 units of an item.',
+  'Vezi coșul': 'View cart',
+  Cantitate: 'Quantity',
+  'Scade cantitatea': 'Decrease quantity',
+  'Crește cantitatea': 'Increase quantity',
+  'Imagine indisponibilă': 'Image unavailable',
+  'În stoc': 'In stock',
+  'Stoc epuizat': 'Sold out',
+  'De la': 'From',
+  'Adaugă în coș': 'Add to cart',
+  'DIN SRI LANKA, CU DRAG': 'FROM SRI LANKA, WITH LOVE',
+  'Gusturi familiare. Mai aproape de casă.':
+    'Familiar flavours. A little closer to home.',
+  'UMPLE CĂMARA CU CE IUBEȘTI': 'FILL YOUR PANTRY WITH WHAT YOU LOVE',
+  'Explorează categoriile': 'Explore the pantry',
+  'Vezi toate produsele': 'Shop all products',
+  'PENTRU BUCĂTĂRIA TA': 'FOR YOUR EVERYDAY KITCHEN',
+  'Din cămara Lanka Kade': 'Pantry favourites',
+  'Ingredientele de zi cu zi pentru gusturile de care îți este dor.':
+    'Everyday ingredients for the flavours you’ve missed.',
+  'Se încarcă produsele…': 'Finding your favourites…',
+  'Produsele nu au putut fi încărcate.': 'We couldn’t load the products.',
+  'Catalogul este în pregătire. Revino în curând.':
+    'Our pantry is being stocked. Check back soon.',
+  'MICILE LUCRURI CARE CONTEAZĂ': 'THE LITTLE THINGS THAT MATTER',
+  'O cămară plină de amintiri.': 'A pantry full of memories.',
+  'Descoperă ingredientele pentru următoarea masă împreună.':
+    'Discover the ingredients for your next meal together.',
+  'Despre cumpărături': 'Shopping with Lanka Kade',
+  'Selecție din Sri Lanka': 'Sri Lankan selection',
+  'Gusturi pe care le cunoști': 'Familiar favourites',
+  'Cumpărături simple': 'Simple shopping',
+  'Preț și disponibilitate la vedere': 'Clear prices and availability',
+  'Mai aproape de casă': 'A little closer to home',
+  'O comunitate în România': 'A community in Romania',
+  'Prețul minim trebuie să fie mai mic decât prețul maxim.':
+    'The minimum price must not exceed the maximum price.',
+  'Cămara din Sri Lanka': 'Shop the Sri Lankan pantry',
+  'Găsește ingredientele pentru mesele tale preferate.':
+    'Find the ingredients for your favourite meals.',
+  'Filtrează produsele': 'Refine your selection',
+  'Orez, ceai, mirodenii…': 'Rice, tea, spices…',
+  Categorie: 'Category',
+  'Toate produsele': 'All products',
+  'Preț (RON)': 'Price (RON)',
+  Minim: 'Minimum',
+  Maxim: 'Maximum',
+  'Aplică filtrele': 'Apply filters',
+  'Resetează filtrele': 'Reset filters',
+  Produse: 'Products',
+  'Prețuri în RON': 'Prices in RON',
+  'Produsele nu au putut fi încărcate. Verifică filtrele sau încearcă din nou.':
+    'We couldn’t load the products. Check your filters or try again.',
+  'Nu am găsit produse': 'No products found',
+  'Încearcă alți termeni sau resetează filtrele.':
+    'Try a different search or reset your filters.',
+  'Prima pagină': 'First page',
+  'Pagina următoare': 'Next page',
+  'Se afișează {count} produse': 'Showing {count} products',
+  'Se încarcă produsul…': 'Loading the product…',
+  'Produsul nu mai este disponibil.': 'This product is no longer available.',
+  'Produsul nu a putut fi încărcat.': 'We couldn’t load this product.',
+  'Înapoi la magazin': 'Back to the shop',
+  'Imagini produs': 'Product photos',
+  'Imaginea {number}': 'Photo {number}',
+  'Combinație indisponibilă': 'Combination unavailable',
+  'Descoperă acest produs din selecția Lanka Kade.':
+    'Discover this item from the Lanka Kade selection.',
+  'Această combinație nu este disponibilă. Alege alte opțiuni.':
+    'This combination is unavailable. Please choose different options.',
+  'Disponibilitatea și prețul sunt reconfirmate în coș.':
+    'Price and availability are checked again in your cart.',
+  'Un ingredient pentru gusturile tale de acasă.':
+    'An ingredient for your taste of home.',
+  'Detalii produs': 'Product details',
+  'Consultă ambalajul pentru ingrediente, alergeni și informații despre produs.':
+    'Please check the packaging for ingredients, allergens and product information.',
+  'Completează-ți cămara': 'Complete your pantry',
+  'Coșul nu a putut fi încărcat.': 'We couldn’t load your cart.',
+  'Se încarcă coșul…': 'Loading your cart…',
+  'Coșul tău': 'Your cart',
+  'Gusturile tale preferate, într-un singur loc.':
+    'Your favourite flavours, all in one place.',
+  'Coșul tău este gol': 'Your cart is empty',
+  'Descoperă produsele și adaugă-ți preferatele.':
+    'Explore the pantry and add your favourites.',
+  Indisponibil: 'Unavailable',
+  'Stocul s-a schimbat. Verifică această cantitate.':
+    'Stock has changed. Please review this quantity.',
+  Elimină: 'Remove',
+  'Sumar coș': 'Cart summary',
+  Subtotal: 'Subtotal',
+  'Livrarea și totalul final vor fi confirmate la finalizarea comenzii.':
+    'Delivery and the final total will be confirmed at checkout.',
+  'Continuă cumpărăturile': 'Continue shopping',
+  'Magazin · Romania Lanka Kade': 'Shop · Romania Lanka Kade',
+  'Disponibilitatea s-a schimbat. Verifică produsul și cantitatea.':
+    'Availability has changed. Please review the product and quantity.',
+  'Coșul poate conține cel mult 50 de produse diferite.':
+    'Your cart can contain up to 50 different items.',
 } as const
 
 export type MessageKey = keyof typeof english

@@ -23,7 +23,7 @@ export function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === 'object' && !Array.isArray(value)
 }
 
-function readOrigin(): string {
+export function getApiOrigin(): string {
   const value = import.meta.env.VITE_API_ORIGIN?.trim()
   if (!value) return ''
   try {
@@ -56,7 +56,7 @@ export async function request(
   path: string,
   options: RequestOptions = {},
 ): Promise<unknown> {
-  const origin = readOrigin()
+  const origin = getApiOrigin()
   let response: Response
   try {
     response = await fetch(`${origin}/api/v1${path}`, {
@@ -102,6 +102,10 @@ export async function request(
 }
 
 const errorMessages: Record<string, MessageKey> = {
+  CART_STOCK_CHANGED:
+    'Disponibilitatea s-a schimbat. Verifică produsul și cantitatea.',
+  CART_LIMIT: 'Coșul poate conține cel mult 50 de produse diferite.',
+
   INVALID_CREDENTIALS:
     'Adresa de e-mail sau parola este incorectă. Verifică și dacă ai confirmat adresa de e-mail.',
   AUTHENTICATION_REQUIRED: 'Sesiunea a expirat. Autentifică-te din nou.',

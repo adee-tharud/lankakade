@@ -72,15 +72,21 @@ export function Addresses() {
   }
 
   return (
-    <div className="addresses-section">
-      <div className="panel-heading">
+    <div>
+      <div
+        data-slot="panel-heading"
+        className="gap-3.5 flex justify-between items-center mb-3 mobile:items-start mobile:flex-wrap"
+      >
         <div>
-          <span className="eyebrow">{t('PREGĂTIT PENTRU DATA VIITOARE')}</span>
-          <h2 ref={listHeading} tabIndex={-1}>
+          <span className="gap-1.75 inline-flex items-center text-[0.59rem] font-bold tracking-[0.13em] leading-[1.7]">
+            {t('PREGĂTIT PENTRU DATA VIITOARE')}
+          </span>
+          <h2 className="mt-2" ref={listHeading} tabIndex={-1}>
             {t('Adrese salvate')}{' '}
           </h2>
         </div>
         <Button
+          className="mobile:w-full"
           variant="secondary"
           disabled={Boolean(editor) || loading || addresses.length >= 20}
           onClick={() => {
@@ -91,22 +97,22 @@ export function Addresses() {
           <Plus size={17} aria-hidden="true" /> {t('Adaugă adresă')}{' '}
         </Button>
       </div>
-      <p className="panel-description">
+      <p className="text-[0.78rem] text-muted mb-6.25">
         {t('Adresele tale, la îndemână pentru următoarea comandă.')}{' '}
       </p>
       {error && <Notice>{t(error)}</Notice>}
       {notice && <Notice tone="success">{t(notice)}</Notice>}
       {loading ? (
-        <p className="loading-copy" role="status">
+        <p className="px-0 py-11.25 text-muted text-[0.8rem]" role="status">
           {t('Se încarcă adresele…')}{' '}
         </p>
       ) : (
         <>
           {!error && addresses.length === 0 && !editor && (
-            <div className="empty-state">
+            <div className="px-5 py-12.5 bg-surface border border-dashed border-border rounded-[14px] text-center [&_>_svg]:mx-auto [&_>_svg]:mt-0 [&_>_svg]:mb-5 [&_>_svg]:text-muted">
               <MapPin size={32} aria-hidden="true" />
               <h3>{t('Unde trimitem gustul de acasă?')}</h3>
-              <p>
+              <p className="mx-0 text-[0.78rem] mt-2.5 mb-6 text-muted">
                 {t('Adaugă prima adresă de livrare. O poți modifica oricând.')}
               </p>
               <Button onClick={() => setEditor('new')}>
@@ -114,31 +120,38 @@ export function Addresses() {
               </Button>
             </div>
           )}
-          <div className="address-list">
+          <div className="gap-4 grid grid-cols-[repeat(2,_minmax(0,_1fr))] tablet:grid-cols-[1fr]">
             {addresses.map((address) => (
-              <article className="address-card" key={address.id}>
-                <div className="address-card-heading">
-                  <span className="address-icon">
+              <article
+                className="p-5.5 bg-surface border border-border rounded-xl wrap-anywhere"
+                key={address.id}
+              >
+                <div className="gap-2.5 flex items-center mb-5">
+                  <span className="grid place-items-center w-8.75 h-8.75 rounded-[10px] bg-brand-soft">
                     <MapPin size={20} aria-hidden="true" />
                   </span>
                   <h3>{address.label || t('Adresă de livrare')}</h3>
                 </div>
-                <strong>{address.recipientName}</strong>
-                <p>
+                <strong className="text-[0.77rem]">
+                  {address.recipientName}
+                </strong>
+                <p className="text-[0.71rem] text-muted mt-1.25">
                   {address.addressLine1}
                   {address.addressLine2 && `, ${address.addressLine2}`}
                 </p>
-                <p>
+                <p className="text-[0.71rem] text-muted mt-1.25">
                   {address.locality}, {address.region}, {address.postalCode}
                 </p>
-                <p>
+                <p className="text-[0.71rem] text-muted mt-1.25">
                   {address.countryCode} <span aria-hidden="true">·</span>{' '}
                   {address.recipientPhone}
                 </p>
                 {confirmDelete === address.id ? (
-                  <div className="delete-confirm">
-                    <p>{t('Ștergi această adresă?')}</p>
-                    <div className="button-row">
+                  <div className="border-t border-t-border pt-3.75 mt-3.75 [&_[data-slot=button]]:p-2.5 [&_[data-slot=button]]:min-h-10.5 [&_[data-slot=button]]:text-[0.65rem]">
+                    <p className="text-[0.74rem] mb-2.5">
+                      {t('Ștergi această adresă?')}
+                    </p>
+                    <div className="gap-2.5 flex flex-wrap mobile:[&_>_[data-slot=button]]:flex-1">
                       <Button
                         variant="danger"
                         pending={deleting}
@@ -156,7 +169,7 @@ export function Addresses() {
                     </div>
                   </div>
                 ) : (
-                  <div className="address-actions">
+                  <div className="gap-2.5 flex mt-3.75 pt-2.5 border-t border-t-border [&_[data-slot=button]]:text-[0.66rem]">
                     <Button
                       variant="quiet"
                       disabled={deleting || Boolean(editor)}
@@ -180,7 +193,9 @@ export function Addresses() {
             ))}
           </div>
           {addresses.length >= 20 && (
-            <p className="help-copy">{t('Ai atins limita de 20 de adrese.')}</p>
+            <p className="mx-0 my-4.75 text-muted text-[0.7rem]">
+              {t('Ai atins limita de 20 de adrese.')}
+            </p>
           )}
         </>
       )}

@@ -29,17 +29,22 @@ export function ProfileForm({ user }: { user: Customer }) {
     })
   }
   return (
-    <section className="account-panel">
-      <div className="panel-heading">
+    <section className="p-7.5 bg-surface border border-border rounded-[15px] [&_[data-slot=field]]:max-w-132.5 mobile:p-5.5">
+      <div
+        data-slot="panel-heading"
+        className="gap-3.5 flex justify-between items-center mb-3 mobile:items-start mobile:flex-wrap"
+      >
         <div>
-          <span className="eyebrow">{t('DESPRE TINE')}</span>
-          <h2>{t('Date personale')}</h2>
+          <span className="gap-1.75 inline-flex items-center text-[0.59rem] font-bold tracking-[0.13em] leading-[1.7]">
+            {t('DESPRE TINE')}
+          </span>
+          <h2 className="mt-2">{t('Date personale')}</h2>
         </div>
-        <span className="verified-badge">
+        <span className="px-2.5 py-1.75 gap-1.25 inline-flex items-center text-success bg-brand-soft rounded-[20px] text-[0.6rem] whitespace-nowrap mobile:text-[0.56rem]">
           <CircleCheck size={14} /> {t('E-mail confirmat')}{' '}
         </span>
       </div>
-      <p className="panel-description">
+      <p className="text-[0.78rem] text-muted mb-6.25">
         {t('Păstrează-ți informațiile de contact la zi.')}{' '}
       </p>
       {error && <Notice>{error}</Notice>}
@@ -67,11 +72,15 @@ export function ProfileForm({ user }: { user: Customer }) {
             maxLength={32}
             error={fieldErrors.phone}
           />
-          <div className="email-readonly">
+          <div className="p-3.75 gap-3 flex items-center bg-muted-surface mb-6.25 rounded-lg">
             <Mail size={18} aria-hidden="true" />
             <div>
-              <span>{t('Adresa de e-mail')}</span>
-              <strong>{user.email}</strong>
+              <span className="block text-[0.62rem] text-muted">
+                {t('Adresa de e-mail')}
+              </span>
+              <strong className="block text-[0.75rem] font-medium mt-1 wrap-anywhere">
+                {user.email}
+              </strong>
             </div>
           </div>
           <Button type="submit" pending={pending}>

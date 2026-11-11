@@ -81,7 +81,7 @@ test('customer registration, email verification, session, profile, addresses, re
   const verifying = page.getByRole('button', { name: 'Se verifică e-mailul…' })
   await expect(verifying).toBeDisabled()
   await expect(verifying).toHaveAttribute('aria-busy', 'true')
-  await expect(verifying.locator('.spin')).toBeVisible()
+  await expect(verifying.locator('[data-slot=spinner]')).toBeVisible()
   releaseVerification()
   await expect(page).toHaveURL(/\/sign-in$/)
   await expect(page.getByRole('status')).toContainText(
@@ -255,7 +255,11 @@ test('English and Romanian work across routes, preserve form drafts, and persist
   await page.reload()
   await expect(page.getByRole('combobox')).toHaveValue('en')
   await expect(page).toHaveTitle('Your account · Romania Lanka Kade')
-  await expect(page.getByRole('contentinfo').getByRole('link')).toHaveCount(0)
+  await expect(
+    page
+      .getByRole('contentinfo')
+      .getByRole('link', { name: /My account|Saved addresses/ }),
+  ).toHaveCount(0)
 
   for (const path of [
     '/register',

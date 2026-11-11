@@ -1,32 +1,21 @@
-# React + TypeScript + Vite
+# LankaKade storefront
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React, TypeScript, Vite, Tailwind, and Redux storefront for Sri Lankan groceries in Romania. Includes public Home, Shop, product details, English/Romanian UI, authentication, profile/addresses, and a signed-in server cart. Contact and About pages are deferred.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Run `npm ci`.
+2. Configure and start the sibling backend using its [local setup](../backend/knowledge-base/auth-and-accounts.md#local-setup).
+3. Run `npm run dev`; open `http://localhost:5173`. Vite proxies `/api` to port 3000. See [.env.example](./.env.example) for API configuration.
 
-## React Compiler
+## Checks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm run build
+npm run lint
+npm run test:browser
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Browser tests require isolated API, database, and failure-simulation services. Follow [verification setup](./knowledge-base/11-auth-and-account.md#verification-and-repeatable-checks) and [catalog fixture setup](./knowledge-base/12-storefront-browsing.md#verification). `test:e2e`, `test:storefront`, and `test:api-failures` select individual suites.
+
+Read the [knowledge base](./knowledge-base/README.md) before making changes. Colors belong in `src/styles/theme.css`; secrets belong in server configuration. Production requires HTTPS, API routing, and SPA fallback.

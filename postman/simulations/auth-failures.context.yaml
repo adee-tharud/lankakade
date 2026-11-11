@@ -1,6 +1,6 @@
 purpose:
-  stands_in_for: The sibling LankaKade API during controlled auth failures.
-  unblocks: Browser checks of recoverable service failure, rate limit, malformed response, HTML gateway failure, and timeout handling.
+  stands_in_for: The sibling LankaKade API during controlled auth and catalog failures.
+  unblocks: Browser checks of recoverable account and catalog service failure, rate limit, malformed response, HTML gateway failure, and timeout handling.
 assumptions:
   - id: api-error-contract
     status: supported
@@ -13,7 +13,7 @@ assumptions:
     status: supported
     claim: The storefront remains on sign-in with an enabled retry action after the injected login failures.
     reason: Chrome exercised the real frontend HTTP client against the Postman simulation.
-    verification: On 2026-11-11 the three api-failures browser tests passed. The simulation log showed GET /api/v1/account returning 503 and POST /api/v1/auth/login returning 429, malformed 200, HTML 502, and a 13-second delayed response. The client reported a timeout after its 12-second limit. This establishes client behavior in these scenarios.
+    verification: On 2026-11-11 the four api-failures browser tests passed. The simulation log showed GET /api/v1/account returning 503 and POST /api/v1/auth/login returning 429, malformed 200, HTML 502, and a 13-second delayed response. Catalog list and category requests returned 503; retry, language switching, and public navigation remained available. The client reported a timeout after its 12-second limit. This establishes client behavior in these scenarios. Reran all four scenarios after the Tailwind migration on the same date; notices, retry actions, language switching, navigation, and the keyboard focus assertion passed. Updated a stale homepage-heading assertion to match the heading already present before the migration; the failure fixture and HTTP client were unchanged.
     source: test/browser/api-failures.spec.ts; src/services/api/request.ts; postman/mocks/auth-failures/default.js
     updated_at: '2026-11-11'
   - id: failure-fixture-scope

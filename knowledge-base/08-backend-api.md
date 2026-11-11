@@ -23,13 +23,13 @@ Keep the API origin in frontend environment configuration. Route paths in the ta
 | Method and path | Input | Result |
 | --- | --- | --- |
 | `GET /categories` | Optional `q`, `after`, `limit` | `200 { categories, nextCursor }`. Category rows include `id`, `name`, `slug`, and `description`. |
-| `GET /products` | Optional `q`, `category` (slug), `minPrice`, `maxPrice`, `after`, `limit` | `200 { products, nextCursor }`. Each row has `id`, `categoryId`, `categorySlug`, `name`, `slug`, `priceFrom`, and `inStock`. |
+| `GET /products` | Optional `q`, `category` (slug), `minPrice`, `maxPrice`, `after`, `limit` | `200 { products, nextCursor }`. Each row has `id`, `categoryId`, `categorySlug`, `name`, `slug`, `priceFrom`, `inStock`, `imageUrl`, and `imageAltText`. |
 | `GET /products/:slug` | Product slug | `200 { product }` with description, images, options, and variants. Returns `404` when the product is missing or hidden. |
 | `GET /product-images/:key` | Managed image key from a product's image URL | `200` with `image/webp` bytes, or `404`. |
 
 Lists are in ascending ID order. `limit` defaults to 20 and accepts 1–50. Use the returned `nextCursor` as `after` with the same filters. `null` marks the final page. Search `q` matches part of a name or slug and accepts up to 100 characters. Price filters are inclusive decimal amounts and must match the same active variant. `priceFrom` is the lowest price across all active variants even when a filter matched a different one.
 
-Products appear when their category and product are active and at least one variant is active. Active sold-out variants remain visible. On product detail, match selected option value IDs to a returned variant's `optionValueIds`. Use its `id`, `sku`, `price`, `availableStock`, and `availability` (`in_stock` or `sold_out`). Products without options use a single default variant with an empty `optionValueIds` list. Product list rows omit images and variant details. On detail, image URLs may be absolute HTTPS URLs or API-relative paths such as `/api/v1/product-images/<key>`. Resolve relative paths against the API origin. See the [catalog contract](../../backend/knowledge-base/product-catalog.md#storefront-api).
+Products appear when their category and product are active and at least one variant is active. Active sold-out variants remain visible. On product detail, match selected option value IDs to a returned variant's `optionValueIds`. Use its `id`, `sku`, `price`, `availableStock`, and `availability` (`in_stock` or `sold_out`). Products without options use a single default variant with an empty `optionValueIds` list. Product list rows include the first ordered image as nullable `imageUrl` and `imageAltText`; they omit variant details. A card can render without a photo and loads detail before choosing a real variant for a cart write. On detail, image URLs may be absolute HTTPS URLs or API-relative paths such as `/api/v1/product-images/<key>`. Resolve relative paths against the API origin. See the [catalog contract](../../backend/knowledge-base/product-catalog.md#storefront-api).
 
 ## Authentication and account
 

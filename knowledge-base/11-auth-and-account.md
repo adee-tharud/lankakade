@@ -6,7 +6,7 @@ The first storefront feature implements registration, email confirmation, sign-i
 
 | Route | Behavior |
 | --- | --- |
-| `/sign-in` | Email and password sign-in. Loads the full customer profile before entering the account. |
+| `/sign-in` | Email and password sign-in. Loads the full customer profile, then returns to an allowlisted storefront path when arriving from a guest cart notice; otherwise enters the account. |
 | `/register` | Name, email, password, and client-side password confirmation. Accepted requests show a generic email prompt. |
 | `/verify-email` | Opens an email-link confirmation action when a token is present. Clicking it disables the button and shows verification progress. Successful verification redirects to sign-in with a confirmation notice. Failures stay on the page with a recovery link. |
 | `/forgot-password` | Requests a reset link with a generic response for known and unknown addresses. |
@@ -43,8 +43,10 @@ The real-API browser suite requires a fresh, disposable MySQL instance. Initiali
 
 For the default test setup, with the storefront running on 5173, `npm run test:e2e` covers registration, verification, HttpOnly cookies, reload persistence, profile updates, address CRUD, logout, password reset, consumed reset links, and session revocation. It also checks verification progress and redirect, direct logout, both languages across routes, preference persistence, preserved form drafts and translated errors, blocked preference storage, and layouts down to 320 px. Email capture tests the application link flow. SMTP delivery and production HTTPS deployment require verification in their target environments.
 
-For controlled failures, run `postman simulation run postman/simulations/auth-failures.sim.yaml --port 4010 --no-history`, then start a separate storefront preview with `API_PROXY_TARGET=http://localhost:4010/storefront npm run dev -- --port 5175`. Run `npm run test:api-failures`. This tests recovery from a profile-service outage, rate limiting, a malformed login response, an HTML gateway error, a request timeout, and keyboard focus. The fixture models failures on the exercised routes and returns 501 elsewhere. Its source and verification scope are recorded in [the simulation context](../postman/simulations/auth-failures.context.yaml).
+For controlled failures, run `postman simulation run postman/simulations/auth-failures.sim.yaml --port 4010 --no-history`, then start a separate storefront preview with `API_PROXY_TARGET=http://localhost:4010/storefront npm run dev -- --port 5175`. Run `npm run test:api-failures`. This tests recovery from profile and catalog service outages, rate limiting, a malformed login response, an HTML gateway error, a request timeout, and keyboard focus. The fixture models failures on the exercised routes and returns 501 elsewhere. Its source and verification scope are recorded in [the simulation context](../postman/simulations/auth-failures.context.yaml).
 
 Stop temporary test processes after verification. Keep their database files, screenshots, traces, and synthetic email links outside committed source.
 
 To avoid using ports occupied by a running development session, set `STOREFRONT_TEST_API_PORT` and `STOREFRONT_TEST_ORIGIN` on the test backend harness. Run the test preview on that origin with `API_PROXY_TARGET` pointing to the isolated API, and set the same `STOREFRONT_TEST_ORIGIN` when running Playwright. Email capture continues to use loopback port 4101.
+
+The initial `/` route is the public Home page. Authentication never forces a visitor away from Home. The shared header displays sign-in/register for guests and the customer’s first name with account, addresses, and logout actions after sign-in. See [storefront browsing](./12-storefront-browsing.md).
