@@ -19,7 +19,7 @@ Recommended semantic color roles:
 | Border | Default, strong, focus, and destructive outlines. |
 | Status | Success, warning, error, and information feedback. |
 
-The final palette, typography, logo treatment, and light/dark-mode policy remain open product decisions. Add them here before building pages.
+The initial auth and account implementation uses the reference's green and cream style, pale green primary actions, Plus Jakarta Sans, and the supplied logo and hero artwork. The central palette lives in `src/styles/theme.css`. The first release uses a light theme. See the [implementation notes](./11-auth-and-account.md) for the current scope.
 
 ## Component hierarchy
 
@@ -41,7 +41,7 @@ See the [storefront UI reference](./10-storefront-ui-reference.md) for the Figma
 
 ## Content conventions
 
-- Use Romanian as the default customer language unless product requirements specify multilingual content.
+- Support English and Romanian through the shared header language selector. Keep Romanian as the default and preserve the selected language across navigation and reloads.
 - Display prices in RON consistently and make discounts, stock limits, delivery conditions, and errors unambiguous.
 - Keep destructive actions explicit and reversible where possible.
 

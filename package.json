@@ -7,15 +7,24 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "playwright test test/browser/auth-account.spec.ts",
+    "test:api-failures": "playwright test test/browser/api-failures.spec.ts"
   },
   "dependencies": {
+    "@fontsource/plus-jakarta-sans": "^5.3.0",
     "@reduxjs/toolkit": "^2.14.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "lucide-react": "^1.71.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "redux": "^5.0.1"
+    "react-redux": "^9.3.1",
+    "react-router-dom": "^7.18.5",
+    "redux": "^5.0.1",
+    "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",

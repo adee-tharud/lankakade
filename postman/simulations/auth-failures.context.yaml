@@ -1,0 +1,31 @@
+purpose:
+  stands_in_for: The sibling LankaKade API during controlled auth failures.
+  unblocks: Browser checks of recoverable service failure, rate limit, malformed response, HTML gateway failure, and timeout handling.
+assumptions:
+  - id: api-error-contract
+    status: supported
+    claim: The backend uses an error code with an optional message and field for HTTP failures.
+    reason: The error handler and auth routes define this shape.
+    verification: Read the sibling error handler and auth route sources on 2026-11-11. Real-API browser tests exercised invalid credentials and a consumed reset token.
+    source: ../../backend/src/middleware/error-handler.js; ../../backend/src/modules/auth/auth.routes.js; test/browser/auth-account.spec.ts
+    updated_at: '2026-11-11'
+  - id: recoverable-client-failures
+    status: supported
+    claim: The storefront remains on sign-in with an enabled retry action after the injected login failures.
+    reason: Chrome exercised the real frontend HTTP client against the Postman simulation.
+    verification: On 2026-11-11 the three api-failures browser tests passed. The simulation log showed GET /api/v1/account returning 503 and POST /api/v1/auth/login returning 429, malformed 200, HTML 502, and a 13-second delayed response. The client reported a timeout after its 12-second limit. This establishes client behavior in these scenarios.
+    source: test/browser/api-failures.spec.ts; src/services/api/request.ts; postman/mocks/auth-failures/default.js
+    updated_at: '2026-11-11'
+  - id: failure-fixture-scope
+    status: supported
+    claim: This fixture injects failures and does not model successful sessions or persistence.
+    reason: The real sibling backend handles success verification separately.
+    verification: Read the local handler and observed 501 for an unmodeled route. Owner search was skipped because postman status could not access local credential state in the sandbox. The fixture was derived from the checked-out backend contract.
+    source: postman/mocks/auth-failures/default.js; test/support/backend.mjs
+    updated_at: '2026-11-11'
+fingerprints:
+  - id: storefront-auth-2026-11-11
+    date: '2026-11-11'
+    commit: 9580e73f72d18f6f9c7baf7178eb06cc088d2d26
+    cli: 1.87.0
+    # Verification used the uncommitted auth/account implementation on this base.

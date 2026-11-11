@@ -1,0 +1,6 @@
+simulation: auth-failures
+routing: path
+mocks:
+  - name: storefront-api
+    routeKey: storefront
+    path: postman/mocks/auth-failures
